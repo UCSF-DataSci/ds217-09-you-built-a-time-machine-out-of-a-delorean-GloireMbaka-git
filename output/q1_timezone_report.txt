@@ -1,0 +1,17 @@
+
+TODO: Document your timezone operations:
+- What timezone was your original data in: UTC time: 2025-11-19 20:46:57.590330+00:00?
+- How did you localize the data: I localized the date using patient_vitals_tz.index = patient_vitals_tz.index.tz_localize('UTC')?
+- What timezone did you convert to: I converted the UTC into the US/Eastern ime using tz_convert('US/Eastern')  ?
+- What issues did you encounter with DST? (Note: Using UTC avoids DST ambiguity)
+: There were no issues encountered with DST because UTC does not observe daylight saving time,
+- Include at least one example showing a datetime before and after conversion : 
+patient visit (UTC): '2023-01-03 00:00:00+00:00'
+Patient visit (US/Eastern): '2023-01-03 19:00:00-05:00'
+- Explain why UTC is recommended as the base timezone for storing temporal data: 
+Using UTC as the base timezone for storing temporal data is recommended because it provides a consistent reference point that is not affected by local time changes,
+such as daylight saving time (DST) transitions. Local timezones can shift forward or backward during DST changes, 
+which can lead to ambiguity and errors in time calculations. 
+For example, a timestamp recorded during the fall back transition may occur twice, making it unclear which instance is being referred to. 
+By storing all timestamps in UTC, we eliminate these ambiguities and ensure that time comparisons and calculations remain accurate regardless of the local timezone. 
+When displaying or analyzing data, we can then convert UTC timestamps to the appropriate local timezone as needed, ensuring clarity and consistency across different regions and time periods.
